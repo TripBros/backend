@@ -18,13 +18,11 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-/src/main/resources/mysql.properties
+/src/main/resources/mysql.yml
 .idea
 *.iws
 *.iml
 *.ipr
-*.yml
-application.properties
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
