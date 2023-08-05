@@ -18,6 +18,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+/src/main/resources/mysql.properties
 .idea
 *.iws
 *.iml
