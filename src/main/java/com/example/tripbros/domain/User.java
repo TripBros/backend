@@ -3,15 +3,11 @@ package com.example.tripbros.domain;
 import com.example.tripbros.domain.enumerate.Gender;
 import com.example.tripbros.domain.enumerate.Role;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
+
+import java.util.Locale;
 
 @Entity
 @Getter
@@ -19,7 +15,7 @@ import lombok.Getter;
 public class User {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String email;
 	private String nickname;
@@ -28,6 +24,7 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	private String travelStyle;
+
 
 	@Column(columnDefinition = "TEXT") //Nullable
 	private String profileImage;
@@ -47,6 +44,14 @@ public class User {
 		this.role = role;
 	}
 
+	@Builder
+	public User(String email, int ageRange, Gender gender) {
+		this.email = email;
+		this.age = ageRange;
+		this.gender = gender;
+	}
+
 	public User() {
 	}
+
 }

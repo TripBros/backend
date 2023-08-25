@@ -19,6 +19,8 @@ bin/
 
 ### IntelliJ IDEA ###
 /src/main/resources/mysql.yml
+/src/main/resources/jwt.yml
+/src/main/resources/oauth.yml
 .idea
 *.iws
 *.iml

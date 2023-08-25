@@ -1,10 +1,6 @@
 package com.example.tripbros.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,21 +9,26 @@ import lombok.Getter;
 public class RefreshToken {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	@Column(name = "user_id", nullable = false, unique = true)
+	private Long userId;
 
+	@Column(name="refresh_token", nullable = false)
 	private String refreshToken;
 
 	@Builder
-	public RefreshToken(User user, String refreshToken) {
-		this.user = user;
+	public RefreshToken(Long userId, String refreshToken) {
+		this.userId = userId;
 		this.refreshToken = refreshToken;
 	}
 
 	public RefreshToken() {
+	}
+
+	public RefreshToken update(String newRefreshToken) {
+		this.refreshToken = newRefreshToken;
+		return this;
 	}
 }
