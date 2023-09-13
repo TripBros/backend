@@ -29,7 +29,7 @@ public class WebOAuthSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity 인http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .httpBasic().disable()
                 .formLogin().disable()

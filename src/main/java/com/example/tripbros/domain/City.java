@@ -14,12 +14,12 @@ public class City {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private Continent continent;
+	private String continent;
 	private String country;
 	private String city;
 
 	@Builder
-	public City(Continent continent, String country, String city) {
+	public City(String  continent, String country, String city) {
 		this.continent = continent;
 		this.country = country;
 		this.city = city;
