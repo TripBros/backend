@@ -2,8 +2,8 @@ spring:
   config:
     import:
     - "mysql.yml"
-#    - "oauth.yml"
-#    - "jwt.yml"
+    - "oauth.yml"
+    - "jwt.yml"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${mysql_endpoint}:3306/tripbros?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
