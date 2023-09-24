@@ -6,14 +6,14 @@ spring:
 #    - "jwt.yml"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/tripbros?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://${mysql_endpoint}:3306/tripbros?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: ${mysql_username}
     password: ${mysql_password}
 
   jpa:
     database: mysql
     hibernate:
-      ddl-auto: none #update
+      ddl-auto: update #update
     show-sql: true
     properties:
       hibernate:
