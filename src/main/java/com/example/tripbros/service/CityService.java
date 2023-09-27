@@ -16,8 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 public class CityService {
 	private final CityRepository cityRepository;
 
-	public Optional<City> getCity(String continent, String country, String city){
-		return cityRepository.findByContinentAndCountryAndCity(continent, country, city);
+	public Optional<City> getCity(String name){
+		return cityRepository.findByName(name);
 
 	}
 }

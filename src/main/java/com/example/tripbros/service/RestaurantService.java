@@ -8,10 +8,8 @@ import java.util.regex.Pattern;
 import org.springframework.stereotype.Service;
 
 import com.example.tripbros.domain.City;
-import com.example.tripbros.domain.Restaurant;
 import com.example.tripbros.dto.RestaurantReturnDTO;
 import com.example.tripbros.repository.RestaurantRepository;
-import com.example.tripbros.dto.RestaurantForm;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,13 +20,13 @@ import lombok.extern.slf4j.Slf4j;
 public class RestaurantService {
 	private final RestaurantRepository restaurantRepository;
 	private final CityService cityService;
-	public List<RestaurantReturnDTO> getRestaurants(RestaurantForm form){
-		City city = cityService.getCity(form.getContinent(), form.getCountry(), form.getCity())
+	public List<RestaurantReturnDTO> getRestaurants(String cityName, Integer width, Integer height){
+		City city = cityService.getCity(cityName)
 			.orElseThrow(() -> new IllegalArgumentException("존재하지 않는 도시입니다."));
 		List<RestaurantReturnDTO> result = new ArrayList<>();
 		restaurantRepository.findAllByCity(city).forEach(restaurant -> {
 			String link = restaurant.getImg();
-			restaurant.setImg(setImageScale(link, form.getWidth(), form.getHeight()));
+			restaurant.setImg(setImageScale(link, width, height));
 			result.add(new RestaurantReturnDTO(restaurant));
 		});
 		return result;
